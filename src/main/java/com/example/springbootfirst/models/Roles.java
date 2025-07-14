@@ -1,3 +1,4 @@
+
 package com.example.springbootfirst.models;
 
 import jakarta.persistence.Entity;
@@ -15,6 +16,8 @@ import lombok.NoArgsConstructor;
 public class Roles {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private int roleId;
-  private String name;
+  private  int roleId;
+  private  String roleName;
+
 }
+
