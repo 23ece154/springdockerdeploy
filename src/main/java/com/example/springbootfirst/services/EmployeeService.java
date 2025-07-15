@@ -35,10 +35,6 @@ public class EmployeeService {
         return registerDetailsRepository.findById(empId).orElse(new RegisterDetails());
     }
 
-//    public List<RegisterDetails> getEmployeeByJob() {
-//        return registerDetailsRepository.findByRole();
-//    }
-
     public String updateEmployee(int empId) {
         RegisterDetails user = registerDetailsRepository.findById(empId)
                 .orElseThrow(()->new RuntimeException("No Such User Present"));
