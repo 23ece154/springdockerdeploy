@@ -1,5 +1,3 @@
-
-
 package com.example.springbootfirst.models;
 
 import jakarta.persistence.Id;
