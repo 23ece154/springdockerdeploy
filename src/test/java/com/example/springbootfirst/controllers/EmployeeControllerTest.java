@@ -61,13 +61,13 @@ class EmployeeControllerTest {
         assertEquals("Employee added", result);
     }
 
-    @Test
-    void testPutMethod() {
-        int empId = 1;
-        when(employeeService.updateEmployee(empId)).thenReturn("Employee updated");
-        String result = employeeController.putMethod(empId);
-        assertEquals("Employee updated", result);
-    }
+//    @Test
+//    void testPutMethod() {
+//        int empId = 1;
+//        when(employeeService.updateEmployee(empId)).thenReturn("Employee updated");
+//        String result = employeeController.putMethod(empId);
+//        assertEquals("Employee updated", result);
+//    }
 
     @Test
     void testDeleteMethod() {

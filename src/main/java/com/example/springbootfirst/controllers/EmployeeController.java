@@ -53,15 +53,24 @@ public class EmployeeController {
         return employeeService.addNewEmployee(employee);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
-    @PutMapping("/employee/{empId}")
-    public String putMethod(@PathVariable int empId){
-        return employeeService.updateEmployee(empId);
-    }
+//    @PreAuthorize("hasRole('ADMIN')")
+//    @PutMapping("/employee/{empId}")
+//    public String putMethod(@PathVariable int empId){
+//        return employeeService.updateEmployee(empId);
+//    }
+//
 
     @PreAuthorize("hasRole('ADMIN')")
-    @DeleteMapping("/employee/{empID}")
-    public String deleteMethod(@PathVariable int empID){
-        return employeeService.deleteEmployeeById(empID);
+    @PutMapping("/employee/{empId}")
+    public String putMethod(@PathVariable int empId, @RequestBody UserDetailsDto updatedData) {
+        return employeeService.updateEmployee(empId, updatedData);
     }
+
+
+    @PreAuthorize("hasRole('ADMIN')")
+    @DeleteMapping("/employee/{empId}")
+    public String deleteMethod(@PathVariable int empId){
+        return employeeService.deleteEmployeeById(empId);
+    }
+
 }

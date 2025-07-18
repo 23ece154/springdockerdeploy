@@ -35,16 +35,31 @@ public class EmployeeService {
         return registerDetailsRepository.findById(empId).orElse(new RegisterDetails());
     }
 
-    public String updateEmployee(int empId) {
-        RegisterDetails user = registerDetailsRepository.findById(empId)
-                .orElseThrow(()->new RuntimeException("No Such User Present"));
-        registerDetailsRepository.save(user);
-        return "Employee Updated Successfully";
+//    public String updateEmployee(int empId) {
+//        RegisterDetails user = registerDetailsRepository.findById(empId)
+//                .orElseThrow(()->new RuntimeException("No Such User Present"));
+//        registerDetailsRepository.save(user);
+//        return "Employee Updated Successfully";
+//    }
+
+    public String updateEmployee(int empId, UserDetailsDto updatedData) {
+        RegisterDetails employee = registerDetailsRepository.findById(empId).orElse(null);
+        if (employee != null) {
+            if (updatedData.getName() != null) employee.setName(updatedData.getName());
+            if (updatedData.getEmail() != null) employee.setEmail(updatedData.getEmail());
+            registerDetailsRepository.save(employee);
+            return "Employee updated successfully.";
+        }
+        return "Employee not found.";
     }
 
-    public String deleteEmployeeById(int empID) {
-        registerDetailsRepository.deleteById(empID);
-        return "Employee Deleted Successfully";
+    public String deleteEmployeeById(int empId) {
+        RegisterDetails employee = registerDetailsRepository.findById(empId).orElse(null);
+        if (employee != null) {
+            registerDetailsRepository.deleteById(empId);
+            return "Employee deleted successfully.";
+        }
+        return "Employee not found.";
     }
 
     public String addNewEmployee(UserDetailsDto register) {

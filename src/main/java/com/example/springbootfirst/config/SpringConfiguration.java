@@ -44,6 +44,7 @@ public class SpringConfiguration {
             .cors(Customizer.withDefaults())
             .authorizeHttpRequests(auth-> {
               auth.requestMatchers("/api/auth/**").permitAll();
+              auth.requestMatchers("/employee/**").hasAnyRole("USER", "ADMIN");
               auth.anyRequest().authenticated();
             })
             .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
